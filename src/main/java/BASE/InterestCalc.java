@@ -31,34 +31,44 @@ Alter the program to use a function called calculateSimpleInterest that takes in
 In addition to printing out the final amount, print out the amount at the end of each year.
  */
 
-import java.util.Scanner;
-
-public class App
+public class InterestCalc
 {
-    static Scanner in = new Scanner(System.in);
+    private int principal;
+    private double rInterest; //Stored as percentage
+    private int years;
+    private double total;
 
-    public static void main(String[] args)
+    public InterestCalc(int principal, double rInterest, int years)
     {
-        App prog = new App();
-
-        //INPUT
-        System.out.print("Enter the principal: ");
-        int principal = in.nextInt();
-        System.out.print("Enter the rate of interest: ");
-        double rInterest = in.nextDouble();
-        System.out.print("Enter the number of years: ");
-        int years = in.nextInt();
-
-        //Calculate output
-        InterestCalc calc = new InterestCalc(principal, rInterest, years);
-        calc.investTotal();
-
-        //Output
-        prog.sendOutput(calc);
+        this.principal = principal;
+        this.rInterest = rInterest;
+        this.years = years;
     }
 
-    private void sendOutput(InterestCalc calc)
+
+    public void investTotal()
     {
-        System.out.printf("After %d at %.2f the investment will be worth $%,.2f.", calc.getYears(), calc.getrInterest(), calc.getTotal());
+        this.total = (principal*(1 +(rInterest/100)*years));
+    }
+
+
+    public int getPrincipal()
+    {
+        return principal;
+    }
+
+    public double getTotal()
+    {
+        return total;
+    }
+
+    public double getrInterest()
+    {
+        return rInterest;
+    }
+
+    public int getYears()
+    {
+        return years;
     }
 }
